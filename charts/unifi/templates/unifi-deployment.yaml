@@ -41,7 +41,7 @@ spec:
               protocol: UDP
           env:
             - name: MONGO_HOST
-              value: mongo
+              value: {{ .Release.Name }}-mongo
             - name: MONGO_USER
               valueFrom:
                 secretKeyRef:
