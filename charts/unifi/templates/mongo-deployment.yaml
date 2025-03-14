@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-mongo
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-unifi
+        app: {{ .Release.Name }}-mongo
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -31,29 +31,9 @@ spec:
                   key: password
                   name: mongo
           volumeMounts:
-            - name: unifi-data
-              mountPath: /var/lib/unifi
-            - name: unifi-logs
-              mountPath: /var/log/unifi
+            - name: unifi-db
+              mountPath: /data/db
       volumes:
-        - name: unifi-data
+        - name: unifi-db
           persistentVolumeClaim:
-            claimName: unifi-data
-        - name: unifi-logs
-          emptyDir: {}
-
-
-environment:
-  - MONGO_USER=ubnt
-  - MONGO_PASS=ubnt
-  - MONGO_DBNAME=ubnt
-volumes:
-  - type: bind
-    source: ./init-mongo.js
-    target: /docker-entrypoint-initdb.d/init-mongo.js
-    read_only: true
-    bind:
-      selinux: z
-  - type: volume
-    source: unifi-db
-    target: /data/db
+            claimName: unifi-mongo
