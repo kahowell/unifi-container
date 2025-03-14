@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
-  repository: localhost/unifi
-  tag: ""
+  repository: ghcr.io/kahowell/unifi
+  tag: b778565c44b93ca7fdda53ca685092b77644ccae
   pullPolicy: IfNotPresent
 
 mongo:
