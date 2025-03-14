@@ -65,6 +65,6 @@ spec:
       volumes:
         - name: unifi-data
           persistentVolumeClaim:
-            claimName: unifi-data
+            claimName: unifi-unifi
         - name: unifi-logs
           emptyDir: {}
