@@ -24,16 +24,26 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: user
-                  name: mongo
+                  name: {{ .Release.Name }}
             - name: MONGO_PASS
               valueFrom:
                 secretKeyRef:
                   key: password
-                  name: mongo
+                  name: {{ .Release.Name }}
+            - name: MONGO_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  key: dbName
+                  name: {{ .Release.Name }}
           volumeMounts:
             - name: unifi-db
               mountPath: /data/db
+            - name: init
+              mountPath: /docker-entrypoint-initdb.d
       volumes:
         - name: unifi-db
           persistentVolumeClaim:
             claimName: unifi-mongo
+        - name: init
+          configMap:
+            name: {{ .Release.Name }}-mongo

@@ -10,6 +10,7 @@ mongo:
     tag: 8
   user: "ubnt"
   password: ""
+  dbName: ubnt
   persistence:
     accessModes:
       - ReadWriteOnce
