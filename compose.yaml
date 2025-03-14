@@ -1,0 +1,30 @@
+services:
+  unifi:
+    build: .
+    environment:
+      - MONGO_HOST=mongo
+    ports:
+      - "127.0.0.1:8443:8443"
+    volumes:
+      - type: volume
+        source: unifi-data
+        target: /var/lib/unifi
+  mongo:
+    image: docker.io/library/mongo:8
+    environment:
+      - MONGO_USER=ubnt
+      - MONGO_PASS=ubnt
+      - MONGO_DBNAME=ubnt
+    volumes:
+      - type: bind
+        source: ./init-mongo.js
+        target: /docker-entrypoint-initdb.d/init-mongo.js
+        read_only: true
+        bind:
+          selinux: z
+      - type: volume
+        source: unifi-db
+        target: /data/db
+volumes:
+  unifi-data:
+  unifi-db:

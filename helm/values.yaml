@@ -1,0 +1,29 @@
+replicaCount: 1
+image:
+  repository: localhost/unifi
+  tag: ""
+  pullPolicy: IfNotPresent
+
+mongo:
+  image:
+    repository: docker.io/library/mongo
+    tag: 8
+  user: "ubnt"
+  password: ""
+  persistence:
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    # storageClassName: default
+    # selectorLabels: {}
+
+ingress:
+  enabled: true
+  hostname: unifi.example.com
+
+persistence:
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  # storageClassName: default
+  # selectorLabels: {}

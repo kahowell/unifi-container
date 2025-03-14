@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-mongo
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-unifi
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.mongo.image.repository }}:{{ .Values.mongo.image.tag }}"
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: mongo
+            - name: MONGO_PASS
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mongo
+          volumeMounts:
+            - name: unifi-data
+              mountPath: /var/lib/unifi
+            - name: unifi-logs
+              mountPath: /var/log/unifi
+      volumes:
+        - name: unifi-data
+          persistentVolumeClaim:
+            claimName: unifi-data
+        - name: unifi-logs
+          emptyDir: {}
+
+
+environment:
+  - MONGO_USER=ubnt
+  - MONGO_PASS=ubnt
+  - MONGO_DBNAME=ubnt
+volumes:
+  - type: bind
+    source: ./init-mongo.js
+    target: /docker-entrypoint-initdb.d/init-mongo.js
+    read_only: true
+    bind:
+      selinux: z
+  - type: volume
+    source: unifi-db
+    target: /data/db

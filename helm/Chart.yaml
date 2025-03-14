@@ -1,0 +1,6 @@
+apiVersion: v2
+name: unifi
+description: A Helm chart for Unifi Network Controller
+type: application
+version: 0.1.0
+appVersion: "9.0.114-28033-1"
