@@ -2,5 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sENV .*?_VERSION=\"(?<currentValue>.*)\""
+      ],
+      "registryUrlTemplate": "https://www.ui.com/downloads/unifi/debian?suite=stable&components=ubiquiti&binaryArch=amd64",
+      "datasourceTemplate": "deb"
+    }
   ]
 }

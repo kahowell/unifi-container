@@ -1,5 +1,6 @@
 FROM docker.io/library/ubuntu:noble-20250127
-ARG unifi_version=9.0.114-28033-1
+# renovate: depName=unifi
+ENV UNIFI_VERSION=9.0.114-28033-1
 ENV UNIFI_CORE_ENABLED=false
 ENV UNIFI_MONGODB_SERVICE_ENABLED=false
 ENV UNIFI_JVM_OPTS="-Xmx1024M -XX:+UseParallelGC"
@@ -12,7 +13,7 @@ ENV MONGO_DBNAME=ubnt
 ADD --chmod=644 https://dl.ui.com/unifi/unifi-repo.gpg /etc/apt/trusted.gpg.d/unifi-repo.gpg
 RUN apt-get update && apt-get install -y ca-certificates apt-transport-https
 RUN echo 'deb [ arch=amd64,arm64 ] https://www.ui.com/downloads/unifi/debian stable ubiquiti' > /etc/apt/sources.list.d/100-ubnt-unifi.list
-#RUN apt-get update && apt-get install -y unifi=${unifi_version} mongodb-server- mongodb-10gen- mongodb-org-server-
+#RUN apt-get update && apt-get install -y unifi=${UNIFI_VERSION} mongodb-server- mongodb-10gen- mongodb-org-server-
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
   adduser \
@@ -21,9 +22,9 @@ RUN apt-get update && \
   logrotate \
   openjdk-21-jre-headless
 RUN apt-get update && \
-  apt-get download unifi=${unifi_version} && \
-  dpkg -i --ignore-depends=mongodb-org-server unifi_${unifi_version}_all.deb && \
-  rm -rf unifi_${unifi_version}_all.deb
+  apt-get download unifi=${UNIFI_VERSION} && \
+  dpkg -i --ignore-depends=mongodb-org-server unifi_${UNIFI_VERSION}_all.deb && \
+  rm -rf unifi_${UNIFI_VERSION}_all.deb
 WORKDIR /usr/lib/unifi
 ADD entrypoint.sh /entrypoint.sh
 CMD /entrypoint.sh
