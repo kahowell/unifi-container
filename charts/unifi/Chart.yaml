@@ -2,5 +2,7 @@ apiVersion: v2
 name: unifi
 description: A Helm chart for Unifi Network Controller
 type: application
-version: 0.1.4
+# renovate: depName=unifi
+version: "9.0.114-28033-1"
+# renovate: depName=unifi
 appVersion: "9.0.114-28033-1"
