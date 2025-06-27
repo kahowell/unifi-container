@@ -9,8 +9,8 @@
       "fileMatch": ["^Containerfile$", "^charts/unifi/Chart.yaml$"],
       "matchStrings": [
         "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sENV .*?_VERSION=\"(?<currentValue>.*)\"",
-        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\version: \"(?<currentValue>.*)\"",
-        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\appVersion: \"(?<currentValue>.*)\""
+        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sversion: \"(?<currentValue>.*)\"",
+        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sappVersion: \"(?<currentValue>.*)\""
       ],
       "registryUrlTemplate": "https://www.ui.com/downloads/unifi/debian?suite=stable&components=ubiquiti&binaryArch=amd64",
       "datasourceTemplate": "deb"
