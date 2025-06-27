@@ -14,11 +14,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y qemu-user-static
+      - id: extract_unifi_version
+        run: |
+          echo "version=$(cat Containerfile | grep ENV\ UNIFI_VERSION | awk -F= '{ print $2 }' | tr -d '"')" >> "$GITHUB_OUTPUT"
       - id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
           image: unifi
-          tags: latest ${{ github.sha }}
+          tags: latest ${{ github.sha }} ${{ steps.extract_unifi_version.outputs.version }}
           platforms: linux/amd64, linux/arm64
           containerfiles: ./Containerfile
       - uses: redhat-actions/push-to-registry@v2
