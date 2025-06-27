@@ -3,6 +3,16 @@ entries:
   unifi:
   - apiVersion: v2
     appVersion: 9.0.114-28033-1
+    created: "2025-06-27T21:13:42.004912839Z"
+    description: A Helm chart for Unifi Network Controller
+    digest: d82339da19466d98f50307183669c0d1a2bb120831b9137b6bb779f0636f465a
+    name: unifi
+    type: application
+    urls:
+    - https://github.com/kahowell/unifi-container/releases/download/unifi-9.0.114-28033-1/unifi-9.0.114-28033-1.tgz
+    version: 9.0.114-28033-1
+  - apiVersion: v2
+    appVersion: 9.0.114-28033-1
     created: "2025-03-15T01:34:22.574622623Z"
     description: A Helm chart for Unifi Network Controller
     digest: 513cbed6a2d967a93290f2027895a85af1a53ffa3a416ce388bcf2a984b61e0d
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://github.com/kahowell/unifi-container/releases/download/unifi-0.1.1/unifi-0.1.1.tgz
     version: 0.1.1
-generated: "2025-03-15T01:34:22.57463727Z"
+generated: "2025-06-27T21:13:42.004944789Z"
