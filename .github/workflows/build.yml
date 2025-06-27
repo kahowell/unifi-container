@@ -21,7 +21,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: unifi
-          tags: latest ${{ github.sha }} ${{ steps.extract_unifi_version.outputs.version }}
+          tags: latest ${{ steps.extract_unifi_version.outputs.version }} ${{ github.sha }}
           platforms: linux/amd64, linux/arm64
           containerfiles: ./Containerfile
       - uses: redhat-actions/push-to-registry@v2
