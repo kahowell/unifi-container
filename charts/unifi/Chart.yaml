@@ -3,6 +3,6 @@ name: unifi
 description: A Helm chart for Unifi Network Controller
 type: application
 # renovate: depName=unifi
-version: "9.0.114-28033-1"
+version: "9.2.87-29974-1"
 # renovate: depName=unifi
-appVersion: "9.0.114-28033-1"
+appVersion: "9.2.87-29974-1"
