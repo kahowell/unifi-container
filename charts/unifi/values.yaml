@@ -1,7 +1,8 @@
 replicaCount: 1
 image:
   repository: ghcr.io/kahowell/unifi
-  tag: b778565c44b93ca7fdda53ca685092b77644ccae
+  # renovate: depName=unifi
+  tag: "9.2.87-29974-1"
   pullPolicy: IfNotPresent
 
 mongo:
