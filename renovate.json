@@ -6,9 +6,10 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^Containerfile$"],
+      "fileMatch": ["^Containerfile$", "^charts/unifi/values.yaml$"],
       "matchStrings": [
-        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sENV .*?_VERSION=\"(?<currentValue>.*)\""
+        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sENV .*?_VERSION=\"(?<currentValue>.*)\"",
+        "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\stag: \"(?<currentValue>.*)\""
       ],
       "registryUrlTemplate": "https://www.ui.com/downloads/unifi/debian?suite=stable&components=ubiquiti&binaryArch=amd64",
       "datasourceTemplate": "deb"
