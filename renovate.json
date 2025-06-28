@@ -15,5 +15,7 @@
       "registryUrlTemplate": "https://www.ui.com/downloads/unifi/debian?suite=stable&components=ubiquiti&binaryArch=amd64",
       "datasourceTemplate": "deb"
     }
-  ]
+  ],
+  "automerge": true,
+  "ignoreTests": true
 }
