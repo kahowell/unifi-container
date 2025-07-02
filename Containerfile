@@ -1,4 +1,4 @@
-FROM docker.io/library/ubuntu:noble-20250529
+FROM docker.io/library/ubuntu:noble-20250619
 # renovate: depName=unifi
 ENV UNIFI_VERSION="9.2.87-29974-1"
 ENV UNIFI_CORE_ENABLED=false
