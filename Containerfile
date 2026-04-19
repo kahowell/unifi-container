@@ -20,7 +20,7 @@ RUN apt-get update && \
   curl \
   binutils \
   logrotate \
-  openjdk-21-jre-headless
+  openjdk-25-jre-headless
 RUN apt-get update && \
   apt-get download unifi=${UNIFI_VERSION} && \
   dpkg -i --ignore-depends=mongodb-org-server unifi_${UNIFI_VERSION}_all.deb && \
