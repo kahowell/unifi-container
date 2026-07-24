@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "version=$(cat Containerfile | grep ENV\ UNIFI_VERSION | awk -F= '{ print $2 }' | tr -d '"')" >> "$GITHUB_OUTPUT"
       - id: build-image
-        uses: redhat-actions/buildah-build@v2
+        uses: redhat-actions/buildah-build@v3
         with:
           image: unifi
           tags: latest ${{ steps.extract_unifi_version.outputs.version }} ${{ github.sha }}
