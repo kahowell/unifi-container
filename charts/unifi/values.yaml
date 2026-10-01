@@ -6,7 +6,7 @@ image:
 mongo:
   image:
     repository: docker.io/library/mongo
-    tag: 8
+    tag: 9
   user: "ubnt"
   password: ""
   dbName: ubnt
